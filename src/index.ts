@@ -21,7 +21,7 @@ const PROGRAM_DATA_PUBLIC_KEY = new Web3.PublicKey(
 async function initKeyPair(connection: Web3.Connection): Promise<Web3.Keypair> {
 	if (!process.env.PRIVATE_KEY) {
 		const signer = Web3.Keypair.generate();
-		fs.writeFileSync(".env", `PRIVATE_KEY=${signer.secretKey.toString()}`);
+		fs.writeFileSync(".env", `PRIVATE_KEY=[${signer.secretKey.toString()}]`);
 
 		await airdropSolIfNeeded(signer, connection);
 		return signer;
